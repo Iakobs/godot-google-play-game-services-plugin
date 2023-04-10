@@ -46,6 +46,10 @@ func _on_reveal_button_pressed() -> void:
 	if manager:
 		manager.revealAchievement(HIDDEN_TEST_ACHIEVEMENT_ID)
 
+func _on_all_leaderboards_pressed() -> void:
+	if manager:
+		manager.showAllLeaderboards()
+
 func on_user_authenticated_success() -> void:
 	signed_in_status.text = "You are signed in!"
 	is_signed_in = true
