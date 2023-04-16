@@ -56,4 +56,4 @@ func _on_sign_in_pressed() -> void:
 	GamesSignInClient.sign_in()
 
 func _on_achievements_pressed() -> void:
-	pass
+	get_tree().change_scene("res://Achievements.tscn")

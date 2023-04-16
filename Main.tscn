@@ -85,7 +85,6 @@ margin_right = 620.0
 margin_bottom = 702.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 1 )
-disabled = true
 text = "Achievements"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/UserAuthenticated" to="." method="_on_user_authenticated_pressed"]
