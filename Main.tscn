@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/resources/DynamicFontMedium.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/kenney_game_icons/White/1x/cross.png" type="Texture" id=3]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -43,60 +44,51 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "No :("
 
-[node name="SignIn" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="UserAuthenticated" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 margin_top = 76.0
 margin_right = 620.0
 margin_bottom = 176.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 1 )
-text = "Sign in!"
+text = "Is User Authenticated?"
+icon = ExtResource( 3 )
 
-[node name="ShowAchievements" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SignIn" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 226.0
 margin_right = 620.0
 margin_bottom = 326.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 1 )
-text = "Show achievements"
+text = "Sign in!"
 
-[node name="TestAchievement" type="Button" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="RequestToken" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 376.0
 margin_right = 620.0
 margin_bottom = 476.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 1 )
-text = "Test Achievement"
+text = "Request Token"
 
-[node name="IncrementAchievement" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="TokenLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 margin_top = 526.0
 margin_right = 620.0
-margin_bottom = 626.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 552.0
 custom_fonts/font = ExtResource( 1 )
-text = "Click for a surprise"
+text = "Token:"
 
-[node name="RevealButton" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 676.0
+[node name="Achievements" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 602.0
 margin_right = 620.0
-margin_bottom = 776.0
+margin_bottom = 702.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 1 )
-text = "What is this?"
+disabled = true
+text = "Achievements"
 
-[node name="AllLeaderboardsButton" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 826.0
-margin_right = 620.0
-margin_bottom = 926.0
-rect_min_size = Vector2( 0, 100 )
-custom_fonts/font = ExtResource( 1 )
-text = "Show all leaderboards"
-
+[connection signal="pressed" from="MarginContainer/VBoxContainer/UserAuthenticated" to="." method="_on_user_authenticated_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SignIn" to="." method="_on_sign_in_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ShowAchievements" to="." method="_on_show_achievements_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/TestAchievement" to="." method="_on_test_achievement_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/IncrementAchievement" to="." method="_on_increment_achievement_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/RevealButton" to="." method="_on_reveal_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/AllLeaderboardsButton" to="." method="_on_all_leaderboards_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RequestToken" to="." method="_on_request_token_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]

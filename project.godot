@@ -8,11 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "AndroidPluginClient",
+"language": "GDScript",
+"path": "res://addons/google_play_game_services_manager/AndroidPluginClient.gd"
+} ]
+_global_script_class_icons={
+"AndroidPluginClient": ""
+}
+
 [application]
 
 config/name="Google Play Game Services Demo"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GamesSignInClient="*res://addons/google_play_game_services_manager/GamesSignInClient.gd"
 
 [display]
 
@@ -21,6 +35,10 @@ window/size/height=1280
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/google_play_game_services_manager/plugin.cfg" )
 
 [gui]
 
