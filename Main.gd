@@ -19,6 +19,7 @@ func _ready() -> void:
 	_error = GamesSignInClient.connect("request_server_side_access_failure", self, "on_request_server_side_access_failure")
 	_error = GamesSignInClient.connect("sign_in_success", self, "on_is_user_authenticated_success")
 	_error = GamesSignInClient.connect("sign_in_failure", self, "on_is_user_authenticated_failure")
+	GamesSignInClient.is_user_authenticated()
 
 func _process(_delta: float) -> void:
 	process_sign_in()
@@ -56,4 +57,4 @@ func _on_sign_in_pressed() -> void:
 	GamesSignInClient.sign_in()
 
 func _on_achievements_pressed() -> void:
-	get_tree().change_scene("res://Achievements.tscn")
+	var _error = get_tree().change_scene("res://Achievements.tscn")

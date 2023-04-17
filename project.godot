@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "Achievement",
+"language": "GDScript",
+"path": "res://addons/google_play_game_services_manager/Achievement.gd"
+}, {
+"base": "Node",
 "class": "AndroidPluginClient",
 "language": "GDScript",
 "path": "res://addons/google_play_game_services_manager/AndroidPluginClient.gd"
 } ]
 _global_script_class_icons={
+"Achievement": "",
 "AndroidPluginClient": ""
 }
 
