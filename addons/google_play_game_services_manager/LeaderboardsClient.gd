@@ -1,5 +1,8 @@
 extends AndroidPluginClient
 
+signal submit_score_success
+signal submit_score_failure
+
 enum TimeSpan {
 	TIME_SPAN_DAILY = 0,
 	TIME_SPAN_WEEKLY = 1,
@@ -10,6 +13,17 @@ enum Collection {
 	COLLECTION_PUBLIC = 0,
 	COLLECTION_FRIENDS = 3
 }
+
+func _ready() -> void:
+	if android_plugin:
+		android_plugin.connect("submitScoreSuccess", self, "on_submit_score_success")
+		android_plugin.connect("submitScoreFailure", self, "on_submit_score_failure")
+
+func on_submit_score_success() -> void:
+	emit_signal("submit_score_success")
+
+func on_submit_score_failure() -> void:
+	emit_signal("submit_score_failure")
 
 func show_all_leaderboards() -> void:
 	if android_plugin:
@@ -30,3 +44,7 @@ func show_leaderboard_for_time_span_and_collection(
 ) -> void:
 	if android_plugin:
 		android_plugin.showLeaderboardForTimeSpanAndCollection(leaderboard_id, time_span, collection)
+
+func submit_score(leaderboard_id: String, score: int) -> void:
+	if android_plugin:
+		android_plugin.submitScore(leaderboard_id, score)

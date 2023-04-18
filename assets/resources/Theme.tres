@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=2]
+
+[ext_resource path="res://assets/resources/DynamicFontMedium.tres" type="DynamicFont" id=1]
+
+[resource]
+PopupMenu/constants/vseparation = 50
+PopupMenu/fonts/font = ExtResource( 1 )

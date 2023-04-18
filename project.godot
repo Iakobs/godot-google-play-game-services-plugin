@@ -51,6 +51,7 @@ enabled=PoolStringArray( "res://addons/google_play_game_services_manager/plugin.
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom="res://assets/resources/Theme.tres"
 
 [physics]
 

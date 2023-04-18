@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Leaderboards.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/kenney_game_icons/White/1x/exitLeft.png" type="Texture" id=2]
 [ext_resource path="res://assets/resources/DynamicFontMedium.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.6, 0.6, 0.6, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Leaderboards" type="Control"]
 anchor_right = 1.0
@@ -40,5 +51,61 @@ rect_min_size = Vector2( 100, 100 )
 custom_fonts/font = ExtResource( 3 )
 text = "Show all leaderbords"
 
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 300.0
+margin_right = 620.0
+margin_bottom = 304.0
+custom_styles/separator = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 354.0
+margin_right = 620.0
+margin_bottom = 505.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 620.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+custom_constants/separation = 25
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 620.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 3 )
+text = "Leaderboard"
+align = 1
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 51.0
+margin_right = 620.0
+margin_bottom = 151.0
+rect_min_size = Vector2( 100, 100 )
+custom_fonts/font = ExtResource( 3 )
+text = "-- Select a leaderboard --"
+align = 1
+items = [ "-- Select a leaderboard --", null, false, 0, null, "Test Leaderboard", null, false, 1, null, "Music Notes Leaderboard", null, false, 2, null ]
+selected = 0
+
+[node name="SubmitScore" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 555.0
+margin_right = 620.0
+margin_bottom = 655.0
+rect_min_size = Vector2( 100, 100 )
+custom_fonts/font = ExtResource( 3 )
+disabled = true
+text = "Add 5 points to your score"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 705.0
+margin_right = 620.0
+margin_bottom = 731.0
+custom_fonts/font = ExtResource( 3 )
+text = "Score: 0"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ShowAllLeaderboards" to="." method="_on_show_all_leaderboards_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionButton" to="." method="_on_leaderboard_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SubmitScore" to="." method="_on_submit_score_pressed"]
