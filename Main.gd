@@ -58,3 +58,6 @@ func _on_sign_in_pressed() -> void:
 
 func _on_achievements_pressed() -> void:
 	var _error = get_tree().change_scene("res://Achievements.tscn")
+
+func _on_leaderboards_pressed() -> void:
+	var _error = get_tree().change_scene("res://Leaderboards.tscn")

@@ -87,7 +87,16 @@ rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 1 )
 text = "Achievements"
 
+[node name="Leaderboards" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 752.0
+margin_right = 620.0
+margin_bottom = 852.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = ExtResource( 1 )
+text = "Leaderboards"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/UserAuthenticated" to="." method="_on_user_authenticated_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SignIn" to="." method="_on_sign_in_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RequestToken" to="." method="_on_request_token_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Leaderboards" to="." method="_on_leaderboards_pressed"]
