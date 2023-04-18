@@ -1,12 +1,12 @@
 class_name Achievement
 extends Node
 
-const TYPE_STANDARD = "STANDARD"
-const TYPE_INCREMENTAL = "INCREMENTAL"
+const TYPE_STANDARD = "TYPE_STANDARD"
+const TYPE_INCREMENTAL = "TYPE_INCREMENTAL"
 
-const STATE_UNLOCKED = "UNLOCKED"
-const STATE_REVEALED = "REVEALED"
-const STATE_HIDDEN = "HIDDEN"
+const STATE_UNLOCKED = "STATE_UNLOCKED"
+const STATE_REVEALED = "STATE_REVEALED"
+const STATE_HIDDEN = "STATE_HIDDEN"
 
 var achievement_id: String
 var achievement_name: String

@@ -10,13 +10,17 @@ onready var reveal: Button = $"%Reveal"
 
 func _ready() -> void:
 	var _error := AchievementsClient.connect("reveal_success", self, "on_reveal_success")
-	_error = AchievementsClient.connect("get_success", self, "on_get_success")
+	_error = AchievementsClient.connect("load_success", self, "on_load_success")
 	
 	get_achievements_info()
 
 func on_reveal_success() -> void:
 	AchievementsClient.unlock(HIDDEN_TEST_ACHIEVEMENT_ID)
 	AchievementsClient.get_achievement(HIDDEN_TEST_ACHIEVEMENT_ID, true)
+
+func on_load_success(achievements: Array) -> void:
+	for element in achievements:
+		on_get_success(Achievement.new(element))
 
 func on_get_success(achievement: Achievement) -> void:
 	if achievement:
@@ -33,9 +37,7 @@ func on_get_success(achievement: Achievement) -> void:
 		print("No achievements found")
 
 func get_achievements_info() -> void:
-	AchievementsClient.get_achievement(TEST_ACHIEVEMENT_ID, true)
-	AchievementsClient.get_achievement(INCREMENTAL_TEST_ACHIEVEMENT_ID, true)
-	AchievementsClient.get_achievement(HIDDEN_TEST_ACHIEVEMENT_ID, true)
+	AchievementsClient.load_achievements(true)
 
 func _on_back_pressed() -> void:
 	var _error = get_tree().change_scene("res://Main.tscn")
