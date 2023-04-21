@@ -35,14 +35,14 @@ func on_sign_in_success(is_authenticated: bool) -> void:
 func on_sign_in_failure() -> void:
 	emit_signal("sign_in_failure")
 
-func is_user_authenticated():
+func is_user_authenticated() -> void:
 	if android_plugin:
 		android_plugin.isAuthenticated()
 
-func request_server_side_access(client_id: String, force_refresh_token: bool):
+func request_server_side_access(client_id: String, force_refresh_token: bool) -> void:
 	if android_plugin:
 		android_plugin.requestServerSideAccess(client_id, force_refresh_token)
 
-func sign_in():
+func sign_in() -> void:
 	if android_plugin:
 		android_plugin.signIn()
