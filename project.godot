@@ -26,7 +26,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Google Play Game Services Demo"
+config/name="Google Play Game Services Godot Plugin"
+config/description="A godot plugin to connect to the android godot plugin counterpart of the same name. The project includes a demo of the main features, showing one of the multiple ways of how to use the plugin."
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 

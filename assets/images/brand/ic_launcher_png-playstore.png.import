@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grafico_funciones.png-e385c61464d535d6f6af33e2520efb92.stex"
+path="res://.import/ic_launcher_png-playstore.png-dc3b3980688a81667bd59a58a90825e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grafico_funciones.png"
-dest_files=[ "res://.import/grafico_funciones.png-e385c61464d535d6f6af33e2520efb92.stex" ]
+source_file="res://assets/images/brand/ic_launcher_png-playstore.png"
+dest_files=[ "res://.import/ic_launcher_png-playstore.png-dc3b3980688a81667bd59a58a90825e9.stex" ]
 
 [params]
 
