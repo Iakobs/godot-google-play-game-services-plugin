@@ -1,1 +1,1 @@
-![Plugin Icon](github-social-preview.png)
+![Plugin Icon](assets/images/brand/github-social-preview.png)
