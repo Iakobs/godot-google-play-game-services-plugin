@@ -1,9 +1,5 @@
 extends Control
 
-const TEST_ACHIEVEMENT_ID := "CgkIio-cpKMEEAIQAQ"
-const INCREMENTAL_TEST_ACHIEVEMENT_ID := "CgkIio-cpKMEEAIQAw"
-const HIDDEN_TEST_ACHIEVEMENT_ID := "CgkIio-cpKMEEAIQBA"
-
 onready var unlock: Button = $"%Unlock"
 onready var increment: Button = $"%Increment"
 onready var reveal: Button = $"%Reveal"
@@ -15,8 +11,8 @@ func _ready() -> void:
 	get_achievements_info()
 
 func on_reveal_success() -> void:
-	AchievementsClient.unlock(HIDDEN_TEST_ACHIEVEMENT_ID)
-	AchievementsClient.get_achievement(HIDDEN_TEST_ACHIEVEMENT_ID, true)
+	AchievementsClient.unlock(GameSecrets.HIDDEN_TEST_ACHIEVEMENT_ID)
+	AchievementsClient.get_achievement(GameSecrets.HIDDEN_TEST_ACHIEVEMENT_ID, true)
 
 func on_load_success(achievements: Array) -> void:
 	for element in achievements:
@@ -24,13 +20,13 @@ func on_load_success(achievements: Array) -> void:
 
 func on_get_success(achievement: Achievement) -> void:
 	if achievement:
-		if achievement.achievement_id == TEST_ACHIEVEMENT_ID \
+		if achievement.achievement_id == GameSecrets.TEST_ACHIEVEMENT_ID \
 		&& achievement.state == achievement.STATE_UNLOCKED:
 			unlock.disabled = true
-		if achievement.achievement_id == INCREMENTAL_TEST_ACHIEVEMENT_ID \
+		if achievement.achievement_id == GameSecrets.INCREMENTAL_TEST_ACHIEVEMENT_ID \
 		&& achievement.state == achievement.STATE_UNLOCKED:
 			increment.disabled = true
-		if achievement.achievement_id == HIDDEN_TEST_ACHIEVEMENT_ID \
+		if achievement.achievement_id == GameSecrets.HIDDEN_TEST_ACHIEVEMENT_ID \
 		&& achievement.state == achievement.STATE_UNLOCKED:
 			reveal.disabled = true
 	else:
@@ -46,12 +42,12 @@ func _on_show_achievements_pressed() -> void:
 	AchievementsClient.show_achievements()
 
 func _on_unlock_pressed() -> void:
-	AchievementsClient.unlock(TEST_ACHIEVEMENT_ID)
-	AchievementsClient.get_achievement(TEST_ACHIEVEMENT_ID, true)
+	AchievementsClient.unlock(GameSecrets.TEST_ACHIEVEMENT_ID)
+	AchievementsClient.get_achievement(GameSecrets.TEST_ACHIEVEMENT_ID, true)
 
 func _on_increment_pressed() -> void:
-	AchievementsClient.increment(INCREMENTAL_TEST_ACHIEVEMENT_ID, 1)
-	AchievementsClient.get_achievement(INCREMENTAL_TEST_ACHIEVEMENT_ID, true)
+	AchievementsClient.increment(GameSecrets.INCREMENTAL_TEST_ACHIEVEMENT_ID, 1)
+	AchievementsClient.get_achievement(GameSecrets.INCREMENTAL_TEST_ACHIEVEMENT_ID, true)
 
 func _on_reveal_pressed() -> void:
-	AchievementsClient.reveal(HIDDEN_TEST_ACHIEVEMENT_ID)
+	AchievementsClient.reveal(GameSecrets.HIDDEN_TEST_ACHIEVEMENT_ID)

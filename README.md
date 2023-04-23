@@ -62,6 +62,6 @@ These are the autoloads that the plugin provides so far, with their correspondin
 
 # The demo project
 
-Included with this plugin, there is a demo project that you can run to see the features of the integration with Google Play Game Services. There are some steps that you have to do first, though, which are described in the [android plugin docs](https://github.com/Iakobs/godot-google-play-game-services-android-plugin).
+Included with this plugin, there is a demo project that you can run to see the features of the integration with Google Play Game Services. There are some steps that you have to do first, though, which are described in the [android plugin docs](https://github.com/Iakobs/godot-google-play-game-services-android-plugin#configure-your-editor-android-settings).
 
-
+> :warning: There are some ids from your game, leaderboards, achievements, etc. that you need to change in the `GameSecrets.gd` file.

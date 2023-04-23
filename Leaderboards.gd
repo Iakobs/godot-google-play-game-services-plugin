@@ -1,8 +1,5 @@
 extends Control
 
-const TEST_LEADERBOARD_ID := "CgkIio-cpKMEEAIQAg"
-const MUSICAL_NOTES_LEADERBOARD_ID := "CgkIio-cpKMEEAIQBQ"
-
 onready var option_button: OptionButton = $"%OptionButton"
 onready var submit_score: Button = $"%SubmitScore"
 onready var label: Label = $"%Label"
@@ -31,11 +28,11 @@ func _on_submit_score_pressed() -> void:
 	var score: int
 	match(option_button.selected):
 		1: 
-			leaderboard = TEST_LEADERBOARD_ID
+			leaderboard = GameSecrets.TEST_LEADERBOARD_ID
 			test_leaderboard_score += 5
 			score = test_leaderboard_score
 		2: 
-			leaderboard = MUSICAL_NOTES_LEADERBOARD_ID
+			leaderboard = GameSecrets.MUSICAL_NOTES_LEADERBOARD_ID
 			musical_notes_score += 5
 			score = musical_notes_score
 	label.text = "Score: {0}".format([score])

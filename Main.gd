@@ -1,7 +1,5 @@
 extends Control
 
-const CLIENT_ID := "146910152586-hsdmc3na0dhklhmjkvphfkr172lujh1t.apps.googleusercontent.com"
-
 onready var signed_in_status: Label = $"%SignedInStatus"
 onready var sign_in: Button = $"%SignIn"
 onready var user_authenticated: Button = $"%UserAuthenticated"
@@ -51,7 +49,7 @@ func _on_user_authenticated_pressed() -> void:
 	GamesSignInClient.is_user_authenticated()
 
 func _on_request_token_pressed() -> void:
-	GamesSignInClient.request_server_side_access(CLIENT_ID, true)
+	GamesSignInClient.request_server_side_access(GameSecrets.CLIENT_ID, true)
 
 func _on_sign_in_pressed() -> void:
 	GamesSignInClient.sign_in()

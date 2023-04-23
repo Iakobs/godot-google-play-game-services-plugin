@@ -38,6 +38,7 @@ config/icon="res://icon.png"
 GamesSignInClient="*res://addons/google_play_game_services_manager/GamesSignInClient.gd"
 AchievementsClient="*res://addons/google_play_game_services_manager/AchievementsClient.gd"
 LeaderboardsClient="*res://addons/google_play_game_services_manager/LeaderboardsClient.gd"
+GameSecrets="*res://GameSecrets.gd"
 
 [display]
 
