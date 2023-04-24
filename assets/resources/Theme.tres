@@ -3,5 +3,6 @@
 [ext_resource path="res://assets/resources/DynamicFontMedium.tres" type="DynamicFont" id=1]
 
 [resource]
+Label/fonts/font = ExtResource( 1 )
 PopupMenu/constants/vseparation = 50
 PopupMenu/fonts/font = ExtResource( 1 )

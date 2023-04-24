@@ -1,5 +1,5 @@
 class_name Achievement
-extends Node
+extends Resource
 
 const TYPE_STANDARD = "TYPE_STANDARD"
 const TYPE_INCREMENTAL = "TYPE_INCREMENTAL"

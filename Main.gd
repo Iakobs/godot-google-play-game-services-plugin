@@ -39,7 +39,7 @@ func on_is_user_authenticated_failure() -> void:
 	is_signed_in = false
 
 func on_request_server_side_access_success(auth_token: String) -> void:
-	var trimmed_token := auth_token if auth_token.length() <= 15 else auth_token.left(12) + "..."
+	var trimmed_token := auth_token if auth_token.length() <= 20 else auth_token.left(17) + "..."
 	token_label.text = "Token: " + trimmed_token
 
 func on_request_server_side_access_failure() -> void:
@@ -59,3 +59,6 @@ func _on_achievements_pressed() -> void:
 
 func _on_leaderboards_pressed() -> void:
 	var _error = get_tree().change_scene("res://Leaderboards.tscn")
+
+func _on_friends_pressed() -> void:
+	var _error = get_tree().change_scene("res://Friends.tscn")

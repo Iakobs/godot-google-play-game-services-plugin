@@ -9,19 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Resource",
 "class": "Achievement",
 "language": "GDScript",
-"path": "res://addons/google_play_game_services_manager/Achievement.gd"
+"path": "res://addons/google_play_game_services_manager/achievements/Achievement.gd"
 }, {
 "base": "Node",
 "class": "AndroidPluginClient",
 "language": "GDScript",
 "path": "res://addons/google_play_game_services_manager/AndroidPluginClient.gd"
+}, {
+"base": "Resource",
+"class": "Player",
+"language": "GDScript",
+"path": "res://addons/google_play_game_services_manager/friends/Player.gd"
+}, {
+"base": "Resource",
+"class": "PlayerLevel",
+"language": "GDScript",
+"path": "res://addons/google_play_game_services_manager/friends/PlayerLevel.gd"
+}, {
+"base": "Resource",
+"class": "PlayerLevelInfo",
+"language": "GDScript",
+"path": "res://addons/google_play_game_services_manager/friends/PlayerLevelInfo.gd"
 } ]
 _global_script_class_icons={
 "Achievement": "",
-"AndroidPluginClient": ""
+"AndroidPluginClient": "",
+"Player": "",
+"PlayerLevel": "",
+"PlayerLevelInfo": ""
 }
 
 [application]
@@ -35,10 +53,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GamesSignInClient="*res://addons/google_play_game_services_manager/GamesSignInClient.gd"
-AchievementsClient="*res://addons/google_play_game_services_manager/AchievementsClient.gd"
-LeaderboardsClient="*res://addons/google_play_game_services_manager/LeaderboardsClient.gd"
+GamesSignInClient="*res://addons/google_play_game_services_manager/sign_in/GamesSignInClient.gd"
+AchievementsClient="*res://addons/google_play_game_services_manager/achievements/AchievementsClient.gd"
+LeaderboardsClient="*res://addons/google_play_game_services_manager/leaderboards/LeaderboardsClient.gd"
 GameSecrets="*res://GameSecrets.gd"
+FriendsClient="*res://addons/google_play_game_services_manager/friends/FriendsClient.gd"
 
 [display]
 

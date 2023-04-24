@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://FriendDisplay.gd" type="Script" id=1]
+
+[node name="FriendDisplay" type="VBoxContainer"]
+margin_right = 399.0
+margin_bottom = 124.0
+custom_constants/separation = 25
+script = ExtResource( 1 )
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_right = 399.0
+margin_bottom = 4.0
+
+[node name="DisplayName" type="HBoxContainer" parent="."]
+margin_top = 29.0
+margin_right = 399.0
+margin_bottom = 55.0
+custom_constants/separation = 10
+
+[node name="DisplayNameLabel" type="Label" parent="DisplayName"]
+margin_right = 160.0
+margin_bottom = 26.0
+text = "Display Name:"
+
+[node name="DisplayName" type="Label" parent="DisplayName"]
+unique_name_in_owner = true
+margin_left = 170.0
+margin_right = 394.0
+margin_bottom = 26.0
+text = "PericoDeLosPalotes"
+
+[node name="Title" type="HBoxContainer" parent="."]
+margin_top = 80.0
+margin_right = 399.0
+margin_bottom = 106.0
+custom_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="Title"]
+margin_right = 57.0
+margin_bottom = 26.0
+text = "Title:"
+
+[node name="Title" type="Label" parent="Title"]
+unique_name_in_owner = true
+margin_left = 67.0
+margin_right = 188.0
+margin_bottom = 26.0
+text = "Superhero"
+
+[node name="CurrentLevel" type="HBoxContainer" parent="."]
+margin_top = 131.0
+margin_right = 399.0
+margin_bottom = 157.0
+custom_constants/separation = 10
+
+[node name="CurrentLevelLabel" type="Label" parent="CurrentLevel"]
+margin_right = 165.0
+margin_bottom = 26.0
+text = "Current Level:"
+
+[node name="CurrentLevel" type="Label" parent="CurrentLevel"]
+unique_name_in_owner = true
+margin_left = 175.0
+margin_right = 218.0
+margin_bottom = 26.0
+text = "100"
+
+[node name="FriendStatus" type="HBoxContainer" parent="."]
+margin_top = 182.0
+margin_right = 399.0
+margin_bottom = 208.0
+custom_constants/separation = 10
+
+[node name="FriendStatusLabel" type="Label" parent="FriendStatus"]
+margin_right = 163.0
+margin_bottom = 26.0
+text = "Friend Status:"
+
+[node name="FriendStatus" type="Label" parent="FriendStatus"]
+unique_name_in_owner = true
+margin_left = 173.0
+margin_right = 399.0
+margin_bottom = 26.0
+text = "NO_RELATIONSHIP"
