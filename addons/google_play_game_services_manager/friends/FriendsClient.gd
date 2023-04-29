@@ -18,3 +18,19 @@ func on_load_friend_failure() -> void:
 func load_friends(page_size: int, force_reload: bool) -> void:
 	if android_plugin:
 		android_plugin.loadFriends(page_size, force_reload)
+
+func compare(other_player_id: String) -> void:
+	if android_plugin:
+		android_plugin.compareProfile(other_player_id)
+
+func compare_with_alternative_name_hints(
+	other_player_id: String,
+	other_player_in_game_name: String,
+	current_player_in_game_name: String
+) -> void:
+	if android_plugin:
+		android_plugin.compareProfileWithAlternativeNameHints(
+			other_player_id,
+			other_player_in_game_name,
+			current_player_in_game_name
+		)

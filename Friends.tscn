@@ -55,6 +55,7 @@ margin_right = 620.0
 margin_bottom = 880.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 25
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ShowFriends" to="." method="_on_show_friends_pressed"]
