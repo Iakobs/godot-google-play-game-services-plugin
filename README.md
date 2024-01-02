@@ -55,8 +55,8 @@ These are the autoloads that the plugin provides so far, with their correspondin
   * `func show_leaderboard_for_time_span(leaderboard_id: String, time_span: int) -> void`
   * ```gdscript
     func show_leaderboard_for_time_span_and_collection(
-	    leaderboard_id: String, 
-	    time_span: int, 
+	    leaderboard_id: String,
+	    time_span: int,
 	    collection: int
     ) -> void
     ```

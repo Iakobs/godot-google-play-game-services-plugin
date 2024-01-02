@@ -1,0 +1,203 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://example/snapshots.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/theme.tres" type="Theme" id=2]
+
+[node name="Snapshots" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelTitle" type="Label" parent="VBoxContainer"]
+margin_right = 720.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Events"
+align = 1
+valign = 1
+
+[node name="LineEditSnapshotsOutput" type="LineEdit" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 720.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+virtual_keyboard_enabled = false
+placeholder_text = "Output"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="LabelEndpoints" type="Label" parent="VBoxContainer"]
+margin_top = 160.0
+margin_right = 720.0
+margin_bottom = 236.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Endpoints"
+align = 1
+valign = 2
+
+[node name="ButtonLoadGame" type="Button" parent="VBoxContainer"]
+margin_top = 240.0
+margin_right = 720.0
+margin_bottom = 317.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Load Game (File)"
+expand_icon = true
+
+[node name="ButtonSaveGame" type="Button" parent="VBoxContainer"]
+margin_top = 321.0
+margin_right = 720.0
+margin_bottom = 397.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Save Game (File, Desc, Data, Time, Progress)"
+expand_icon = true
+
+[node name="ButtonShowSavedGames" type="Button" parent="VBoxContainer"]
+margin_top = 401.0
+margin_right = 720.0
+margin_bottom = 477.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Show Saved Games (Title, AddBut, Del, Max)"
+expand_icon = true
+
+[node name="LabelParameters" type="Label" parent="VBoxContainer"]
+margin_top = 481.0
+margin_right = 720.0
+margin_bottom = 557.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Parameters"
+align = 1
+valign = 2
+
+[node name="LineEditFileName" type="LineEdit" parent="VBoxContainer"]
+margin_top = 561.0
+margin_right = 720.0
+margin_bottom = 638.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "savefile"
+align = 1
+placeholder_text = "File Name"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="LineEditDescription" type="LineEdit" parent="VBoxContainer"]
+margin_top = 642.0
+margin_right = 720.0
+margin_bottom = 718.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "This is a savegame description."
+align = 1
+placeholder_text = "Description"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="LineEditSaveData" type="LineEdit" parent="VBoxContainer"]
+margin_top = 722.0
+margin_right = 720.0
+margin_bottom = 798.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "{\"test\": 1}"
+align = 1
+placeholder_text = "Save Data"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="SpinBoxPlayedTimeMs" type="SpinBox" parent="VBoxContainer"]
+margin_top = 802.0
+margin_right = 720.0
+margin_bottom = 878.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1e+17
+value = 2000.0
+rounded = true
+align = 1
+prefix = "Played Time:"
+suffix = "ms"
+
+[node name="SpinBoxProgressValue" type="SpinBox" parent="VBoxContainer"]
+margin_top = 882.0
+margin_right = 720.0
+margin_bottom = 959.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 1.0
+max_value = 50.0
+value = 1.0
+rounded = true
+align = 1
+prefix = "Progress value:"
+
+[node name="LineEditTitle" type="LineEdit" parent="VBoxContainer"]
+margin_top = 963.0
+margin_right = 720.0
+margin_bottom = 1039.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Test Title"
+align = 1
+placeholder_text = "Title"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="CheckButtonAllowAddButton" type="CheckButton" parent="VBoxContainer"]
+margin_top = 1043.0
+margin_right = 720.0
+margin_bottom = 1119.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+pressed = true
+text = "Allow Add Button"
+align = 1
+
+[node name="CheckButtonAllowDelete" type="CheckButton" parent="VBoxContainer"]
+margin_top = 1123.0
+margin_right = 720.0
+margin_bottom = 1199.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+pressed = true
+text = "Allow Delete"
+align = 1
+
+[node name="SpinBoxMaxSnapshots" type="SpinBox" parent="VBoxContainer"]
+margin_top = 1203.0
+margin_right = 720.0
+margin_bottom = 1280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 1.0
+max_value = 50.0
+value = 10.0
+rounded = true
+align = 1
+prefix = "Max snapshots:"
+
+[connection signal="pressed" from="VBoxContainer/ButtonLoadGame" to="." method="_on_ButtonLoadGame_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSaveGame" to="." method="_on_ButtonSaveGame_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonShowSavedGames" to="." method="_on_ButtonShowSavedGames_pressed"]

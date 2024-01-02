@@ -20,3 +20,6 @@ data_*/
 *.jks
 android/build
 android/exports
+
+# Project-specific ignores
+/release

@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://example/main.gd" type="Script" id=1]
+[ext_resource path="res://example/events.tscn" type="PackedScene" id=2]
+[ext_resource path="res://example/leaderboards.tscn" type="PackedScene" id=3]
+[ext_resource path="res://example/achievements.tscn" type="PackedScene" id=4]
+[ext_resource path="res://example/snapshots.tscn" type="PackedScene" id=5]
+[ext_resource path="res://example/players.tscn" type="PackedScene" id=6]
+[ext_resource path="res://example/sign_in.tscn" type="PackedScene" id=7]
+[ext_resource path="res://example/menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/resources/theme.tres" type="Theme" id=9]
+
+[node name="Main" type="Control" groups=["main"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+custom_constants/margin_right = 16
+custom_constants/margin_top = 32
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 32
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 704.0
+margin_bottom = 1248.0
+
+[node name="ContainerScreens" type="VBoxContainer" parent="MarginContainer/MainContainer"]
+margin_right = 688.0
+margin_bottom = 1096.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Menu" parent="MarginContainer/MainContainer/ContainerScreens" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 688.0
+margin_bottom = 1096.0
+
+[node name="Achievements" parent="MarginContainer/MainContainer/ContainerScreens" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 366.0
+margin_right = 688.0
+margin_bottom = 729.0
+
+[node name="Events" parent="MarginContainer/MainContainer/ContainerScreens" instance=ExtResource( 2 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 550.0
+margin_right = 688.0
+margin_bottom = 1096.0
+
+[node name="Leaderboards" parent="MarginContainer/MainContainer/ContainerScreens" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 550.0
+margin_right = 688.0
+margin_bottom = 1096.0
+
+[node name="Players" parent="MarginContainer/MainContainer/ContainerScreens" instance=ExtResource( 6 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 550.0
+margin_right = 688.0
+margin_bottom = 1096.0
+
+[node name="SignIn" parent="MarginContainer/MainContainer/ContainerScreens" instance=ExtResource( 7 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 550.0
+margin_right = 688.0
+margin_bottom = 1096.0
+
+[node name="Snapshots" parent="MarginContainer/MainContainer/ContainerScreens" instance=ExtResource( 5 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 550.0
+margin_right = 688.0
+margin_bottom = 1096.0
+
+[node name="ContainerFooter" type="MarginContainer" parent="MarginContainer/MainContainer"]
+margin_top = 1100.0
+margin_right = 688.0
+margin_bottom = 1216.0
+custom_constants/margin_top = 16
+
+[node name="ButtonBack" type="Button" parent="MarginContainer/MainContainer/ContainerFooter"]
+margin_left = 219.0
+margin_top = 16.0
+margin_right = 469.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 250, 100 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+enabled_focus_mode = 0
+text = "Back"
+expand_icon = true
+
+[connection signal="pressed" from="MarginContainer/MainContainer/ContainerFooter/ButtonBack" to="." method="_on_ButtonBack_pressed"]
