@@ -4,7 +4,7 @@
 [![Godot version](https://img.shields.io/badge/Godot%20Engine-3.5.3-blue.svg)](https://github.com/godotengine/godot/)
 [![Google Play Game Services version](https://img.shields.io/badge/Play%20Games%20Services%20v2-17.0.0-green.svg)](https://developers.google.com/games/services/android/quickstart)
 
-> ⚠️ A **Godot 4.x** version of this plugin can be found [here](https://github.com/Iakobs/godot-play-game-services)!
+> ⚠️ A **Godot 4.2+** version of this plugin can be found [here](https://github.com/Iakobs/godot-play-game-services)!
 
 > ⚠️ This plugin **requires** [Google Play Games Services for Godot](https://github.com/Iakobs/godot-google-play-game-services-plugin), which is a **native plugin** for Android. The addon on the current repository only provide a global singleton with **code completion** out-of-the-box, but it's not a requirement.
 
@@ -21,7 +21,7 @@
 
 # Purpose
 
-This is a godot 3.5.x plugin for easier integration with the [Godot Google Play Game Services Android Plugin](https://github.com/Iakobs/godot-google-play-game-services-android-plugin). While this plugin is by no means necessary to integrate Google Play Games Services to your godot project, it provides a layer of abstraction on top of the Android plugin, giving you some interesting aids like **code completion** or mapping to **typed objects**.
+This is a godot 3.5+ plugin for easier integration with the [Godot Google Play Game Services Android Plugin](https://github.com/Iakobs/godot-google-play-game-services-android-plugin). While this plugin is by no means necessary to integrate Google Play Games Services to your godot project, it provides a layer of abstraction on top of the Android plugin, giving you some interesting aids like **code completion** or mapping to **typed objects**.
 
 # How to use this plugin
 
