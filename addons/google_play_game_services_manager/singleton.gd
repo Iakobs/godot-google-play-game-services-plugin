@@ -306,9 +306,15 @@ func _on_game_saved(saved: bool, file_name: String, description: String) -> void
 	emit_signal("game_saved", saved, file_name, description)
 
 
-func _on_game_loaded(snapshot: Dictionary) -> void:
-	emit_signal("game_loaded", snapshot)
+func _on_game_loaded(snapshot: String) -> void:
+	var parsed_snapshot: Dictionary = JSON.parse(snapshot).result
+	var content: Array = parsed_snapshot.get("content", [])
+
+	if typeof(content) == TYPE_ARRAY:
+		parsed_snapshot["content"] = PoolByteArray(content)
+
+	emit_signal("game_loaded", parsed_snapshot)
 
 
-func _on_conflict_emitted(conflict: Dictionary) -> void:
-	emit_signal("conflict_emitted", conflict)
+func _on_conflict_emitted(conflict: String) -> void:
+	emit_signal("conflict_emitted", JSON.parse(conflict).result)
