@@ -19,17 +19,17 @@ size_flags_vertical = 3
 
 [node name="LabelTitle" type="Label" parent="VBoxContainer"]
 margin_right = 720.0
-margin_bottom = 103.0
+margin_bottom = 87.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "Achievements"
 align = 1
 valign = 1
 
-[node name="LineEditAchievementsOutput" type="LineEdit" parent="VBoxContainer"]
-margin_top = 107.0
+[node name="LineEditOutput" type="LineEdit" parent="VBoxContainer"]
+margin_top = 91.0
 margin_right = 720.0
-margin_bottom = 210.0
+margin_bottom = 179.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 align = 1
@@ -39,74 +39,85 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="LabelEndpoints" type="Label" parent="VBoxContainer"]
-margin_top = 214.0
+margin_top = 183.0
 margin_right = 720.0
-margin_bottom = 317.0
+margin_bottom = 271.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "Endpoints"
 align = 1
 valign = 2
 
-[node name="ButtonIncrementAchievement" type="Button" parent="VBoxContainer"]
-margin_top = 321.0
+[node name="ButtonIncrement" type="Button" parent="VBoxContainer"]
+margin_top = 275.0
 margin_right = 720.0
-margin_bottom = 424.0
+margin_bottom = 362.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Increment Achievement (AchId, Amount)"
+text = "Increment (AchId, Amount, Immediate)"
 expand_icon = true
 
-[node name="ButtonLoadAchievements" type="Button" parent="VBoxContainer"]
-margin_top = 428.0
+[node name="ButtonLoad" type="Button" parent="VBoxContainer"]
+margin_top = 366.0
 margin_right = 720.0
-margin_bottom = 531.0
+margin_bottom = 454.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Load Achievements (ForceReload)"
+text = "Load (ForceReload)"
 expand_icon = true
 
-[node name="ButtonRevealAchievement" type="Button" parent="VBoxContainer"]
-margin_top = 535.0
+[node name="ButtonReveal" type="Button" parent="VBoxContainer"]
+margin_top = 458.0
+margin_right = 720.0
+margin_bottom = 546.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Reveal (AchId, Immediate)"
+expand_icon = true
+
+[node name="ButtonSetSteps" type="Button" parent="VBoxContainer"]
+margin_top = 550.0
 margin_right = 720.0
 margin_bottom = 638.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Reveal Achievement (AchId)"
+text = "Set Steps (AchId, Amount, Immediate)"
 expand_icon = true
 
-[node name="ButtonShowAchievements" type="Button" parent="VBoxContainer"]
+[node name="ButtonShow" type="Button" parent="VBoxContainer"]
 margin_top = 642.0
 margin_right = 720.0
-margin_bottom = 745.0
+margin_bottom = 729.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Show Achievements"
+text = "Show"
 expand_icon = true
 
-[node name="ButtonUnlockAchievement" type="Button" parent="VBoxContainer"]
-margin_top = 749.0
+[node name="ButtonUnlock" type="Button" parent="VBoxContainer"]
+margin_top = 733.0
 margin_right = 720.0
-margin_bottom = 852.0
+margin_bottom = 821.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 enabled_focus_mode = 0
-text = "Unlock Achievement (AchId)"
+text = "Unlock (AchId, Immediate)"
 expand_icon = true
 
 [node name="LabelParameters" type="Label" parent="VBoxContainer"]
-margin_top = 856.0
+margin_top = 825.0
 margin_right = 720.0
-margin_bottom = 959.0
+margin_bottom = 913.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "Parameters"
@@ -114,9 +125,9 @@ align = 1
 valign = 2
 
 [node name="LineEditAchievementId" type="LineEdit" parent="VBoxContainer"]
-margin_top = 963.0
+margin_top = 917.0
 margin_right = 720.0
-margin_bottom = 1066.0
+margin_bottom = 1004.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "CgkIy_Lnrp4ZEAIQDA"
@@ -125,10 +136,10 @@ placeholder_text = "Achievement Id (AchId)"
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="SpinBoxAchievementsAmount" type="SpinBox" parent="VBoxContainer"]
-margin_top = 1070.0
+[node name="SpinBoxAmount" type="SpinBox" parent="VBoxContainer"]
+margin_top = 1008.0
 margin_right = 720.0
-margin_bottom = 1173.0
+margin_bottom = 1096.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1000.0
@@ -137,18 +148,29 @@ rounded = true
 align = 1
 prefix = "Amount"
 
-[node name="CheckButtonAchievementsForceReload" type="CheckButton" parent="VBoxContainer"]
-margin_top = 1177.0
+[node name="CheckButtonForceReload" type="CheckButton" parent="VBoxContainer"]
+margin_top = 1100.0
 margin_right = 720.0
-margin_bottom = 1280.0
+margin_bottom = 1188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 pressed = true
 text = "Force Reload"
 align = 1
 
-[connection signal="pressed" from="VBoxContainer/ButtonIncrementAchievement" to="." method="_on_ButtonIncrementAchievement_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonLoadAchievements" to="." method="_on_ButtonLoadAchievements_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonRevealAchievement" to="." method="_on_ButtonRevealAchievement_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonShowAchievements" to="." method="_on_ButtonShowAchievements_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonUnlockAchievement" to="." method="_on_ButtonUnlockAchievement_pressed"]
+[node name="CheckButtonImmediate" type="CheckButton" parent="VBoxContainer"]
+margin_top = 1192.0
+margin_right = 720.0
+margin_bottom = 1280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+pressed = true
+text = "Immediate"
+align = 1
+
+[connection signal="pressed" from="VBoxContainer/ButtonIncrement" to="." method="_on_ButtonIncrement_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonLoad" to="." method="_on_ButtonLoad_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonReveal" to="." method="_on_ButtonReveal_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSetSteps" to="." method="_on_ButtonSetSteps_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonShow" to="." method="_on_ButtonShow_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonUnlock" to="." method="_on_ButtonUnlock_pressed"]

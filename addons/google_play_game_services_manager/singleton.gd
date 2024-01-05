@@ -4,8 +4,8 @@ extends Node
 # Signals
 # Achievements
 signal achievements_loaded(achievements)
-signal achievement_revealed(revealed, achievement_id)
-signal achievement_unlocked(is_unlocked, achievement_id)
+signal achievements_revealed(revealed, achievement_id)
+signal achievements_unlocked(is_unlocked, achievement_id)
 
 # Events
 signal events_loaded(events)
@@ -63,8 +63,8 @@ func _ready() -> void:
 
 	# Achievements
 	android_plugin.connect("achievementsLoaded", self, "_on_achievements_loaded")
-	android_plugin.connect("achievementRevealed", self, "_on_achievement_revealed")
-	android_plugin.connect("achievementUnlocked", self, "_on_achievement_unlocked")
+	android_plugin.connect("achievementsRevealed", self, "_on_achievements_revealed")
+	android_plugin.connect("achievementsUnlocked", self, "_on_achievements_unlocked")
 
 	# Events
 	android_plugin.connect("eventsLoaded", self, "_on_events_loaded")
@@ -94,29 +94,34 @@ func _ready() -> void:
 
 # Public methods
 # Achievements
-func increment_achievement(achievement_id: String, amount: int) -> void:
+func achievements_increment(achievement_id: String, amount: int, immediate := false) -> void:
 	if android_plugin:
-		android_plugin.incrementAchievement(achievement_id, amount)
+		android_plugin.achievementsIncrement(achievement_id, amount, immediate)
 
 
-func load_achievements(force_reload: bool) -> void:
+func achievements_load(force_reload := false) -> void:
 	if android_plugin:
-		android_plugin.loadAchievements(force_reload)
+		android_plugin.achievementsLoad(force_reload)
 
 
-func reveal_achievement(achievement_id: String) -> void:
+func achievements_reveal(achievement_id: String, immediate := false) -> void:
 	if android_plugin:
-		android_plugin.revealAchievement(achievement_id)
+		android_plugin.achievementsReveal(achievement_id, immediate)
 
 
-func show_achievements() -> void:
+func achievements_set_steps(achievement_id: String, amount: int, immediate := false) -> void:
 	if android_plugin:
-		android_plugin.showAchievements()
+		android_plugin.achievementsSetSteps(achievement_id, amount, immediate)
 
 
-func unlock_achievement(achievement_id: String) -> void:
+func achievements_show() -> void:
 	if android_plugin:
-		android_plugin.unlockAchievement(achievement_id)
+		android_plugin.achievementsShow()
+
+
+func achievements_unlock(achievement_id: String, immediate := false) -> void:
+	if android_plugin:
+		android_plugin.achievementsUnlock(achievement_id, immediate)
 
 
 # Events
@@ -250,12 +255,12 @@ func _on_achievements_loaded(achievements: String) -> void:
 	emit_signal("achievements_loaded", JSON.parse(achievements).result)
 
 
-func _on_achievement_revealed(revealed: bool, achievement_id: String) -> void:
-	emit_signal("achievement_revealed", revealed, achievement_id)
+func _on_achievements_revealed(revealed: bool, achievement_id: String) -> void:
+	emit_signal("achievements_revealed", revealed, achievement_id)
 
 
-func _on_achievement_unlocked(is_unlocked: bool, achievement_id: String) -> void:
-	emit_signal("achievement_unlocked", is_unlocked, achievement_id)
+func _on_achievements_unlocked(is_unlocked: bool, achievement_id: String) -> void:
+	emit_signal("achievements_unlocked", is_unlocked, achievement_id)
 
 
 func _on_events_loaded(events: String) -> void:
