@@ -125,19 +125,19 @@ func achievements_unlock(achievement_id: String, immediate := false) -> void:
 
 
 # Events
-func increment_event(event_id: String, amount: int) -> void:
+func events_increment(event_id: String, amount: int) -> void:
 	if android_plugin:
-		android_plugin.incrementEvent(event_id, amount)
+		android_plugin.eventsIncrement(event_id, amount)
 
 
-func load_events(force_reload: bool) -> void:
+func events_load(force_reload: bool) -> void:
 	if android_plugin:
-		android_plugin.loadEvents(force_reload)
+		android_plugin.eventsLoad(force_reload)
 
 
-func load_events_by_ids(force_reload: bool, event_ids: Array) -> void:
+func events_load_by_ids(force_reload: bool, event_ids: Array) -> void:
 	if android_plugin:
-		android_plugin.loadEventsByIds(force_reload, event_ids)
+		android_plugin.eventsLoadByIds(force_reload, event_ids)
 
 
 # Leaderboards

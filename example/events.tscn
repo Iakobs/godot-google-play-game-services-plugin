@@ -26,7 +26,7 @@ text = "Events"
 align = 1
 valign = 1
 
-[node name="LineEditEventsOutput" type="LineEdit" parent="VBoxContainer"]
+[node name="LineEditOutput" type="LineEdit" parent="VBoxContainer"]
 margin_top = 128.0
 margin_right = 720.0
 margin_bottom = 252.0
@@ -48,7 +48,7 @@ text = "Endpoints"
 align = 1
 valign = 2
 
-[node name="ButtonIncrementEvent" type="Button" parent="VBoxContainer"]
+[node name="ButtonIncrement" type="Button" parent="VBoxContainer"]
 margin_top = 385.0
 margin_right = 720.0
 margin_bottom = 509.0
@@ -59,7 +59,7 @@ enabled_focus_mode = 0
 text = "Increment Event (EvId, Amount)"
 expand_icon = true
 
-[node name="ButtonLoadEvents" type="Button" parent="VBoxContainer"]
+[node name="ButtonLoad" type="Button" parent="VBoxContainer"]
 margin_top = 513.0
 margin_right = 720.0
 margin_bottom = 638.0
@@ -70,7 +70,7 @@ enabled_focus_mode = 0
 text = "Load Events (ForceReload)"
 expand_icon = true
 
-[node name="ButtonLoadEventsByIds" type="Button" parent="VBoxContainer"]
+[node name="ButtonLoadByIds" type="Button" parent="VBoxContainer"]
 margin_top = 642.0
 margin_right = 720.0
 margin_bottom = 766.0
@@ -103,7 +103,7 @@ placeholder_text = "Event Id (EvId)"
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="SpinBoxEventsAmount" type="SpinBox" parent="VBoxContainer"]
+[node name="SpinBoxAmount" type="SpinBox" parent="VBoxContainer"]
 margin_top = 1027.0
 margin_right = 720.0
 margin_bottom = 1151.0
@@ -115,7 +115,7 @@ rounded = true
 align = 1
 prefix = "Amount"
 
-[node name="CheckButtonEventsForceReload" type="CheckButton" parent="VBoxContainer"]
+[node name="CheckButtonForceReload" type="CheckButton" parent="VBoxContainer"]
 margin_top = 1155.0
 margin_right = 720.0
 margin_bottom = 1280.0
@@ -125,6 +125,6 @@ pressed = true
 text = "Force Reload"
 align = 1
 
-[connection signal="pressed" from="VBoxContainer/ButtonIncrementEvent" to="." method="_on_ButtonIncrementEvent_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonLoadEvents" to="." method="_on_ButtonLoadEvents_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonLoadEventsByIds" to="." method="_on_ButtonLoadEventsByIds_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonIncrement" to="." method="_on_ButtonIncrement_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonLoad" to="." method="_on_ButtonLoad_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonLoadByIds" to="." method="_on_ButtonLoadByIds_pressed"]
