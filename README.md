@@ -50,7 +50,7 @@ In this document is listed the autoload signals and methods available for use in
 After you install the addon and enable it in `Project Settings...` > `Plugins`, you should be able to access its functionalities through the singleton:
 
 ```gdscript
-GooglePlayGamesServices.load_game("mysavegame")
+GooglePlayGamesServices.snapshots_load_game("mysavegame")
 ```
 
 ## Signals
@@ -59,11 +59,11 @@ These signals belong to the singleton and can be used by connecting them to a me
 
 ```gdscript
 func _ready() -> void:
-    GooglePlayGamesServices.connect("all_leaderboards_loaded", self, "_on_all_leaderboards_loaded")
-    GooglePlayGamesServices.load_all_leaderboards(true)
+    GooglePlayGamesServices.connect("leaderboards_all_loaded", self, "_on_leaderboards_all_loaded")
+    GooglePlayGamesServices.leaderboards_load_all(true)
 
 
-func _on_all_leaderboards_loaded(leaderboards: Array) -> void:
+func _on_leaderboards_all_loaded(leaderboards: Array) -> void:
     prints(leaderboards)
 ```
 
@@ -71,96 +71,96 @@ func _on_all_leaderboards_loaded(leaderboards: Array) -> void:
 
 #### achievements_loaded(achievements: Array[Dictionary])
 
-This signal is emitted when calling the `load_achievements` method.
+This signal is emitted when calling the `achievements_load` method.
 Returns an array of dictionaries representing the [Achievement](https://developers.google.com/android/reference/com/google/android/gms/games/achievement/Achievement) object.
 
-#### achievement_revealed(revealed: bool, achievement_id: String)
+#### achievements_revealed(revealed: bool, achievement_id: String)
 
-This signal is emitted when calling the `reveal_achievement` method.
+This signal is emitted when calling the `achievements_reveal` method.
 Returns `true` if the achievement is revealed and `false` otherwise. Also returns the id of the achievement.
 
-#### achievement_unlocked(is_unlocked: bool, achievement_id: String)
+#### achievements_unlocked(is_unlocked: bool, achievement_id: String)
 
-This signal is emitted when calling the `increment_achievement` or `unlock_achievement` methods.
+This signal is emitted when calling the `achievements_increment` or `achievements_unlock` methods.
 Returns `true` if the achievement is unlocked or `false` otherwise. Also returns the id of the achievement.
 
 ### Events
 
 #### events_loaded(events: Array[Dictionary])
 
-This signal is emitted when calling the `load_events` method.
+This signal is emitted when calling the `events_load` method.
 Returns an array of dictionaries representing the [Event](https://developers.google.com/android/reference/com/google/android/gms/games/event/Event) object.
 
 #### events_loaded_by_ids(events: Array[Dictionary])
 
-This signal is emitted when calling the `load_events_by_ids` method.
+This signal is emitted when calling the `events_load_by_ids` method.
 Returns an array of dictionaries representing the [Event](https://developers.google.com/android/reference/com/google/android/gms/games/event/Event) object.
 
 ### Leaderboards
 
-#### score_submitted(submitted: bool, leaderboard_id: String)
+#### leaderboards_score_submitted(submitted: bool, leaderboard_id: String)
 
-This signal is emitted when calling the `submit_score` method.
+This signal is emitted when calling the `leaderboards_submit_score` method.
 Returns `true` if the score is submitted. `false` otherwise. Also returns the id of the leaderboard.
 
-#### score_loaded(leaderboard_id: String, score: Dictionary)
+#### leaderboards_score_loaded(leaderboard_id: String, score: Dictionary)
 
-This signal is emitted when calling the `load_player_score` method.
+This signal is emitted when calling the `leaderboards_load_player_score` method.
 Return the leaderboard id and an dictionary representing the [LeaderboardScore](https://developers.google.com/android/reference/com/google/android/gms/games/leaderboard/LeaderboardScore).
 
-#### all_leaderboards_loaded(leaderboards: Array[Dictionary])
+#### leaderboards_all_loaded(leaderboards: Array[Dictionary])
 
-This signal is emitted when calling the `load_all_leaderboards` method.
+This signal is emitted when calling the `leaderboards_load_all` method.
 Returns an array of dictionaries representing the [Leaderboard](https://developers.google.com/android/reference/com/google/android/gms/games/leaderboard/Leaderboard) object.
 
-#### leaderboard_loaded(leaderboard: Dictionary)
+#### leaderboards_loaded(leaderboard: Dictionary)
 
-This signal is emitted when calling the `load_leaderboard` method.
+This signal is emitted when calling the `leaderboards_load` method.
 Returns an dictionary representing the [Leaderboard](https://developers.google.com/android/reference/com/google/android/gms/games/leaderboard/Leaderboard) object.
 
 ### Players
 
-#### current_player_loaded(player: Dictionary)
+#### players_current_loaded(player: Dictionary)
 
-This signal is emitted when calling the `load_current_player` method.
+This signal is emitted when calling the `players_load_current_player` method.
 Returns an dictionary representing the [Player](https://developers.google.com/android/reference/com/google/android/gms/games/Player) object.
 
-#### friends_loaded(friends: Array[Dictionary])
+#### players_friends_loaded(friends: Array[Dictionary])
 
-This signal is emitted when calling the `load_friends` method.
+This signal is emitted when calling the `players_load_friends` method.
 Returns an array of dictionaries representing the [Player](https://developers.google.com/android/reference/com/google/android/gms/games/Player) object.
 
-#### player_searched(player: Dictionary)
+#### players_searched(player: Dictionary)
 
-This signal is emitted when selecting a player in the search window that is being displayed after calling the [search_player] method. Returns an dictionary representing the [Player](https://developers.google.com/android/reference/com/google/android/gms/games/Player) object.
+This signal is emitted when selecting a player in the search window that is being displayed after calling the [players_search] method. Returns an dictionary representing the [Player](https://developers.google.com/android/reference/com/google/android/gms/games/Player) object.
 
 ### Sign In
 
-#### user_authenticated(is_authenticated: bool)
+#### sign_in_user_authenticated(is_authenticated: bool)
 
-This signal is emitted when calling the `is_authenticated` and `sign_in` methods.
+This signal is emitted when calling the `sign_in_is_authenticated` and `sign_in_show_popup` methods.
 Returns `true` if the user is authenticated or `false` otherwise.
 
-#### requested_server_side_access(token: String)
+#### sign_in_requested_server_side_access(token: String)
 
-This signal is emitted when calling the `request_server_side_access` method.
+This signal is emitted when calling the `sign_in_request_server_side_access` method.
 Returns an OAuth 2.0 authorization token as a string.
 
 ### Snapshots
 
-#### game_saved(saved: bool, file_name: String, description: String)
+#### snapshots_game_saved(saved: bool, file_name: String, description: String)
 
-This signal is emitted when calling the `save_game` method.
+This signal is emitted when calling the `snapshots_save_game` method.
 Returns a boolean indicating if the game was saved or not, and the name and description of the save file.
 
-#### game_loaded(snapshot: Dictionary)
+#### snapshots_game_loaded(snapshot: Dictionary)
 
-This signal is emitted when calling the `load_game` method or after selecting a saved game in the window opened by the `show_saved_games` method.
+This signal is emitted when calling the `snapshots_load_game` method or after selecting a saved game in the window opened by the `snapshots_show_saved_games` method.
 Returns an dictionary representing the [Snapshot](https://developers.google.com/android/reference/com/google/android/gms/games/snapshot/Snapshot) object.
 
 As the loaded content is a byte array, convert it to a string first using `snapshot["content].get_string_from_utf8()`.
 
-#### conflict_emitted(conflict: Dictionary)
+#### snapshots_conflict_emitted(conflict: Dictionary)
 
 This signal is emitted when saving or loading a game, whenever a conflict occurs.
 Returns an dictionary representing [SnapshotConflict](https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient.SnapshotConflict) object.
@@ -169,7 +169,7 @@ Returns an dictionary representing [SnapshotConflict](https://developers.google.
 
 ### Achievements
 
-#### increment_achievement(achievement_id: String, amount: int)
+#### achievements_increment(achievement_id: String, amount: int)
 
 Increments an achievement by the given number of steps.
 The achievement must be an incremental achievement.
@@ -177,117 +177,117 @@ Once an achievement reaches at least the maximum number of steps, it will be unl
 Any further increments will be ignored.
 This is the fire-and-forget form of the API (no signals are emitted).
 
-#### load_achievements(force_reload: bool)
+#### achievements_load(force_reload: bool)
 
 Loads the achievement data for the currently signed-in player. Emits `achievements_loaded`.
 
-#### reveal_achievement(achievement_id: String)
+#### achievements_reveal(achievement_id: String)
 
-Reveals a hidden achievement to the currently signed-in player. If the achievement has already been unlocked, this will have no effect. Emits `achievement_revealed`.
+Reveals a hidden achievement to the currently signed-in player. If the achievement has already been unlocked, this will have no effect. Emits `achievements_revealed`.
 
-#### show_achievements()
+#### achievements_show()
 
 Shows a native popup to browse game achievements of the currently signed-in player.
 
-#### unlock_achievement(achievement_id: String)
+#### achievements_unlock(achievement_id: String)
 
-Unlocks an achievement for the currently signed in player. If the achievement is hidden this will reveal it to the player. Emits `achievement_unlocked`.
+Unlocks an achievement for the currently signed in player. If the achievement is hidden this will reveal it to the player. Emits `achievements_unlocked`.
 
 ### Events
 
-#### increment_event(event_id: String, amount: int)
+#### events_increment(event_id: String, amount: int)
 
 Increments an event specified by eventId by the given number of steps.
 This is the fire-and-forget form of the API (no signals are emitted).
 
-#### load_events(force_reload: bool)
+#### events_load(force_reload: bool)
 
 Loads the event data for the currently signed-in player. Emits `events_loaded`.
 
-#### load_events_by_ids(force_reload: bool, event_ids: Array[String])
+#### events_load_by_ids(force_reload: bool, event_ids: Array[String])
 
 Loads the event data for the currently signed-in player for the specified ids. Emits `events_loaded_by_ids`.
 
 ### Leaderboards
 
-#### show_all_leaderboards()
+#### leaderboards_show_all()
 
 Shows a native popup to browse all leaderboards.
 
-#### show_leaderboard(leaderboard_id: String)
+#### leaderboards_show(leaderboard_id: String)
 
 Shows a native popup to browse the specified leaderboard.
 
-#### show_leaderboard_for_time_span(leaderboard_id: String, time_span: Int)
+#### leaderboards_show_for_time_span(leaderboard_id: String, time_span: Int)
 
 Shows a native popup to browse the specified leaderboard for the specified time span.
 
-#### show_leaderboard_for_time_span_and_collection(leaderboard_id: String, time_span: int, collection: int)
+#### leaderboards_show_for_time_span_and_collection(leaderboard_id: String, time_span: int, collection: int)
 
 Shows a native popup to browse the specified leaderboard for the specified time span and collection.
 
-#### submit_score(leaderboard_id: String, score: float)
+#### leaderboards_submit_score(leaderboard_id: String, score: float)
 
-Submits a score to the specified leaderboard. Emits `score_submitted`.
+Submits a score to the specified leaderboard. Emits `leaderboards_score_submitted`.
 
-#### load_player_score(leaderboard_id: String, time_span: int, collection: int)
+#### leaderboards_load_player_score(leaderboard_id: String, time_span: int, collection: int)
 
-Loads the player's score for the specified leaderboard. Emits `score_loaded`.
+Loads the player's score for the specified leaderboard. Emits `leaderboards_score_loaded`.
 
-#### load_all_leaderboards(force_reload: bool)
+#### leaderboards_load_all(force_reload: bool)
 
-Loads the leaderboard data for the currently signed-in player. Emits `all_leaderboards_loaded`.
+Loads the leaderboard data for the currently signed-in player. Emits `leaderboards_all_loaded`.
 
-#### load_leaderboard(leaderboard_id: String, force_reload: bool)
+#### leaderboards_load(leaderboard_id: String, force_reload: bool)
 
-Loads the leaderboard data for the currently signed-in player. Emits `leaderboard_loaded`
+Loads the leaderboard data for the currently signed-in player. Emits `leaderboards_loaded`
 
 ### Players
 
-#### compare_profile(other_player_id: String)
+#### players_compare_profile(other_player_id: String)
 
 Shows a native popup to compare two players.
 
-#### compare_profile_with_alternative_name_hints(other_player_id: String, other_player_in_game_name: String, current_player_in_game_name: String)
+#### players_compare_profile_with_alternative_name_hints(other_player_id: String, other_player_in_game_name: String, current_player_in_game_name: String)
 
 Shows a native popup to compare two players with alternative name hints.
 
-#### load_current_player(force_reload: bool)
+#### players_load_current_player(force_reload: bool)
 
-Loads the player data for the currently signed-in player. Emits `current_player_loaded`.
+Loads the player data for the currently signed-in player. Emits `players_current_loaded`.
 
-#### load_friends(page_size: int, force_reload: bool, ask_for_permission: bool)
+#### players_load_friends(page_size: int, force_reload: bool, ask_for_permission: bool)
 
-Loads the friends data for the currently signed-in player. Emits `friends_loaded`.
+Loads the friends data for the currently signed-in player. Emits `players_friends_loaded`.
 
-#### search_player()
+#### players_search()
 
-Shows a native popup to search for players. Emits `player_searched`.
+Shows a native popup to search for players. Emits `players_searched`.
 
 ### Sign in
 
-#### is_authenticated()
+#### sign_in_is_authenticated()
 
-Checks if the user is signed in. Emits `user_authenticated`.
+Checks if the user is signed in. Emits `sign_in_user_authenticated`.
 
-#### sign_in()
+#### sign_in_show_popup()
 
-Signs in the user. Emits `user_authenticated`.
+Signs in the user. Emits `sign_in_user_authenticated`.
 
-#### request_server_side_access(server_client_id: String, force_refresh_token: bool)
+#### sign_in_request_server_side_access(server_client_id: String, force_refresh_token: bool)
 
-Requests server-side access for the specified server client ID. Emits `requested_server_side_access`.
+Requests server-side access for the specified server client ID. Emits `sign_in_requested_server_side_access`.
 
 ### Snapshots
 
-#### load_game(file_name: String)
+#### snapshots_load_game(file_name: String)
 
-Loads a game from the specified file. Emits `game_loaded` or `conflict_emitted`.
+Loads a game from the specified file. Emits `snapshots_game_loaded` or `snapshots_conflict_emitted`.
 
-#### save_game(file_name: String, description: String, save_data: PoolByteArray, played_time_millis: int, progress_value: int)
+#### snapshots_save_game(file_name: String, description: String, save_data: PoolByteArray, played_time_millis: int, progress_value: int)
 
-Saves a game to the specified file. If saving a string, convert it to a byte array first using `"value".to_utf8()` before passing it as `save_data`. Emits `game_saved` or `conflict_emitted`.
+Saves a game to the specified file. If saving a string, convert it to a byte array first using `"value".to_utf8()` before passing it as `save_data`. Emits `snapshots_game_saved` or `snapshots_conflict_emitted`.
 
-#### show_saved_games(title: String, allow_add_button: bool, allow_delete: bool, max_snapshots: int)
+#### snapshots_show_saved_games(title: String, allow_add_button: bool, allow_delete: bool, max_snapshots: int)
 
-Shows a native popup to browse saved games. Emits `game_loaded`.
+Shows a native popup to browse saved games. Emits `snapshots_game_loaded`.
