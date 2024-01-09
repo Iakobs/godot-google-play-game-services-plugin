@@ -13,53 +13,53 @@ onready var _check_button_ask_permission: CheckButton = find_node("CheckButtonAs
 
 # Built-in overrides
 func _ready() -> void:
-	GooglePlayGamesServices.connect("current_player_loaded", self, "_on_current_player_loaded")
-	GooglePlayGamesServices.connect("friends_loaded", self, "_on_friends_loaded")
-	GooglePlayGamesServices.connect("player_searched", self, "_on_player_searched")
+	GooglePlayGamesServices.connect("players_current_loaded", self, "_on_players_current_loaded")
+	GooglePlayGamesServices.connect("players_friends_loaded", self, "_on_players_friends_loaded")
+	GooglePlayGamesServices.connect("players_searched", self, "_on_players_searched")
 
 
 # Event handlers
 # Buttons
 func _on_ButtonCompareProfile_pressed() -> void:
-	GooglePlayGamesServices.compare_profile(_line_edit_player_id.text)
+	GooglePlayGamesServices.players_compare_profile(_line_edit_player_id.text)
 
 
 func _on_ButtonCompareProfileWithAltNameHints_pressed() -> void:
-	GooglePlayGamesServices.compare_profile_with_alternative_name_hints(
+	GooglePlayGamesServices.players_compare_profile_with_alternative_name_hints(
 		_line_edit_player_id.text,
 		_line_edit_player_name.text,
 		_line_edit_current_player_name.text)
 
 
 func _on_ButtonLoadCurrentPlayer_pressed() -> void:
-	GooglePlayGamesServices.load_current_player(_check_button_players_force_reload.pressed)
+	GooglePlayGamesServices.players_load_current(_check_button_players_force_reload.pressed)
 
 
 func _on_ButtonLoadFriends_pressed() -> void:
-	GooglePlayGamesServices.load_friends(
+	GooglePlayGamesServices.players_load_friends(
 		int(_spin_box_page_size.value),
 		_check_button_players_force_reload.pressed,
 		_check_button_ask_permission.pressed)
 
 
 func _on_ButtonSearchPlayer_pressed() -> void:
-	GooglePlayGamesServices.search_player()
+	GooglePlayGamesServices.players_search()
 
 
 # Return values
-func _on_current_player_loaded(player: Dictionary) -> void:
+func _on_players_current_loaded(player: Dictionary) -> void:
 	var value := "player: " + str(player)
 	_line_edit_players_output.text = value
 	prints(value)
 
 
-func _on_friends_loaded(friends: Array) -> void:
+func _on_players_friends_loaded(friends: Array) -> void:
 	var value := "friends: " + str(friends)
 	_line_edit_players_output.text = value
 	prints(value)
 
 
-func _on_player_searched(player: Dictionary) -> void:
+func _on_players_searched(player: Dictionary) -> void:
 	var value := "player: " + str(player)
 	_line_edit_players_output.text = value
 	prints(value)

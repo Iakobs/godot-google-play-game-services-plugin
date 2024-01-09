@@ -12,23 +12,27 @@ signal events_loaded(events)
 signal events_loaded_by_ids(events)
 
 # Leaderboards
-signal score_submitted(submitted, leaderboard_id)
-signal score_loaded(leaderboard_id, score)
-signal all_leaderboards_loaded(leaderboards)
-signal leaderboard_loaded(leaderboard)
+signal leaderboards_score_submitted(submitted, leaderboard_id)
+signal leaderboards_score_loaded(leaderboard_id, score)
+signal leaderboards_all_loaded(leaderboards)
+signal leaderboards_loaded(leaderboard)
 
 # Players
-signal current_player_loaded(player)
-signal friends_loaded(friends)
-signal player_searched(player)
+signal players_current_loaded(player)
+signal players_friends_loaded(friends)
+signal players_searched(player)
 
 # Sign In
-signal user_authenticated(is_authenticated)
+signal sign_in_user_authenticated(is_authenticated)
+signal sign_in_requested_server_side_access(token)
 
 # Snapshots
-signal game_saved(saved, file_name, description)
-signal game_loaded(snapshot)
-signal conflict_emitted(conflict)
+signal snapshots_game_saved(saved, file_name, description)
+signal snapshots_game_loaded(snapshot)
+signal snapshots_conflict_emitted(conflict)
+
+# Helper
+signal image_stored(image)
 
 
 # Enums
@@ -71,23 +75,27 @@ func _ready() -> void:
 	android_plugin.connect("eventsLoadedByIds", self, "_on_events_loaded_by_ids")
 
 	# Leaderboards
-	android_plugin.connect("scoreSubmitted", self, "_on_score_submitted")
-	android_plugin.connect("scoreLoaded", self, "_on_score_loaded")
-	android_plugin.connect("allLeaderboardsLoaded", self, "_on_all_leaderboards_loaded")
-	android_plugin.connect("leaderboardLoaded", self, "_on_leaderboard_loaded")
+	android_plugin.connect("leaderboardsScoreSubmitted", self, "_on_leaderboards_score_submitted")
+	android_plugin.connect("leaderboardsScoreLoaded", self, "_on_leaderboards_score_loaded")
+	android_plugin.connect("leaderboardsAllLoaded", self, "_on_leaderboards_all_loaded")
+	android_plugin.connect("leaderboardsLoaded", self, "_on_leaderboards_loaded")
 
 	# Players
-	android_plugin.connect("currentPlayerLoaded", self, "_on_current_player_loaded")
-	android_plugin.connect("friendsLoaded", self, "_on_friends_loaded")
-	android_plugin.connect("playerSearched", self, "_on_player_searched")
+	android_plugin.connect("playersCurrentLoaded", self, "_on_players_current_loaded")
+	android_plugin.connect("playersFriendsLoaded", self, "_on_players_friends_loaded")
+	android_plugin.connect("playersSearched", self, "_on_players_searched")
 
 	# Sign In
-	android_plugin.connect("userAuthenticated", self, "_on_user_authenticated")
+	android_plugin.connect("signInUserAuthenticated", self, "_on_sign_in_user_authenticated")
+	android_plugin.connect("signInRequestedServerSideAccess", self, "_on_sign_in_requested_server_side_access")
 
 	# Snapshots
-	android_plugin.connect("gameSaved", self, "_on_game_saved")
-	android_plugin.connect("gameLoaded", self, "_on_game_loaded")
-	android_plugin.connect("conflictEmitted", self, "_on_conflict_emitted")
+	android_plugin.connect("snapshotsGameSaved", self, "_on_snapshots_game_saved")
+	android_plugin.connect("snapshotsGameLoaded", self, "_on_snapshots_game_loaded")
+	android_plugin.connect("snapshotsConflictEmitted", self, "_on_snapshots_conflict_emitted")
+
+	# Helper
+	android_plugin.connect("imageStored", self, "_on_image_stored")
 
 	android_plugin.initialize()
 
@@ -141,99 +149,99 @@ func events_load_by_ids(force_reload: bool, event_ids: Array) -> void:
 
 
 # Leaderboards
-func show_all_leaderboards() -> void:
+func leaderboards_show_all() -> void:
 	if android_plugin:
-		android_plugin.showAllLeaderboards()
+		android_plugin.leaderboardsShowAll()
 
 
-func show_leaderboard(leaderboard_id: String) -> void:
+func leaderboards_show(leaderboard_id: String) -> void:
 	if android_plugin:
-		android_plugin.showLeaderboard(leaderboard_id)
+		android_plugin.leaderboardsShow(leaderboard_id)
 
 
-func show_leaderboard_for_time_span(leaderboard_id: String, time_span: int) -> void:
+func leaderboards_show_for_time_span(leaderboard_id: String, time_span: int) -> void:
 	if android_plugin:
-		android_plugin.showLeaderboardForTimeSpan(leaderboard_id, time_span)
+		android_plugin.leaderboardsShowForTimeSpan(leaderboard_id, time_span)
 
 
-func show_leaderboard_for_time_span_and_collection(leaderboard_id: String, time_span: int, collection: int) -> void:
+func leaderboards_show_for_time_span_and_collection(leaderboard_id: String, time_span: int, collection: int) -> void:
 	if android_plugin:
-		android_plugin.showLeaderboardForTimeSpanAndCollection(leaderboard_id, time_span, collection)
+		android_plugin.leaderboardsShowForTimeSpanAndCollection(leaderboard_id, time_span, collection)
 
 
-func submit_score(leaderboard_id: String, score: float) -> void:
+func leaderboards_submit_score(leaderboard_id: String, score: float) -> void:
 	if android_plugin:
-		android_plugin.submitScore(leaderboard_id, score)
+		android_plugin.leaderboardsSubmitScore(leaderboard_id, score)
 
 
-func load_player_score(leaderboard_id: String, time_span: int, collection: int) -> void:
+func leaderboards_load_player_score(leaderboard_id: String, time_span: int, collection: int) -> void:
 	if android_plugin:
-		android_plugin.loadPlayerScore(leaderboard_id, time_span, collection)
+		android_plugin.leaderboardsLoadPlayerScore(leaderboard_id, time_span, collection)
 
 
-func load_all_leaderboards(force_reload: bool) -> void:
+func leaderboards_load_all(force_reload: bool) -> void:
 	if android_plugin:
-		android_plugin.loadAllLeaderboards(force_reload)
+		android_plugin.leaderboardsLoadAll(force_reload)
 
 
-func load_leaderboard(leaderboard_id: String, force_reload: bool) -> void:
+func leaderboards_load(leaderboard_id: String, force_reload: bool) -> void:
 	if android_plugin:
-		android_plugin.loadLeaderboard(leaderboard_id, force_reload)
+		android_plugin.leaderboardsLoad(leaderboard_id, force_reload)
 
 
 # Players
-func compare_profile(other_player_id: String) -> void:
+func players_compare_profile(other_player_id: String, other_player_in_game_name := "", current_player_in_game_name := "") -> void:
 	if android_plugin:
-		android_plugin.compareProfile(other_player_id)
+		android_plugin.playersCompareProfile(other_player_id)
 
 
-func compare_profile_with_alternative_name_hints(other_player_id: String, other_player_in_game_name: String, current_player_in_game_name: String) -> void:
+func players_compare_profile_with_alternative_name_hints(other_player_id: String, other_player_in_game_name: String, current_player_in_game_name: String) -> void:
 	if android_plugin:
-		android_plugin.compareProfileWithAlternativeNameHints(
+		android_plugin.playersCompareProfileWithAlternativeNameHints(
 			other_player_id,
 			other_player_in_game_name,
 			current_player_in_game_name
 		)
 
 
-func load_current_player(force_reload: bool) -> void:
+func players_load_current(force_reload: bool) -> void:
 	if android_plugin:
-		android_plugin.loadCurrentPlayer(force_reload)
+		android_plugin.playersLoadCurrent(force_reload)
 
 
-func load_friends(page_size: int, force_reload: bool, ask_for_permission: bool) -> void:
+func players_load_friends(page_size: int, force_reload: bool, ask_for_permission: bool) -> void:
 	if android_plugin:
-		android_plugin.loadFriends(page_size, force_reload, ask_for_permission)
+		android_plugin.playersLoadFriends(page_size, force_reload, ask_for_permission)
 
 
-func search_player() -> void:
+func players_search() -> void:
 	if android_plugin:
-		android_plugin.searchPlayer()
+		android_plugin.playersSearch()
 
 
 # Sign In
-func is_authenticated() -> void:
+func sign_in_is_authenticated() -> void:
 	if android_plugin:
-		android_plugin.isAuthenticated()
+		android_plugin.signInIsAuthenticated()
 
 
-func request_server_side_access(client_id: String, force_refresh_token: bool) -> void:
+func sign_in_request_server_side_access(client_id: String, force_refresh_token: bool) -> void:
 	if android_plugin:
-		android_plugin.requestServerSideAccess(client_id, force_refresh_token)
+		android_plugin.signInRequestServerSideAccess(client_id, force_refresh_token)
 
 
-func sign_in() -> void:
+func sign_in_show_popup() -> void:
 	if android_plugin:
-		android_plugin.signIn()
+		android_plugin.signInShowPopup()
 
 
 # Snapshots
-func load_game(file_name: String) -> void:
+func snapshots_load_game(file_name: String) -> void:
 	if android_plugin:
-		android_plugin.loadGame(file_name)
+		android_plugin.snapshotsLoadGame(file_name)
 
 
-func save_game(
+func snapshots_save_game(
 	file_name: String,
 	description: String,
 	save_data: PoolByteArray,
@@ -241,12 +249,12 @@ func save_game(
 	progress_value: int
 ) -> void:
 	if android_plugin:
-		android_plugin.saveGame(file_name, description, save_data, played_time_millis, progress_value)
+		android_plugin.snapshotsSaveGame(file_name, description, save_data, played_time_millis, progress_value)
 
 
-func show_saved_games(title: String, allow_add_button: bool, allow_delete: bool, max_snapshots: int) -> void:
+func snapshots_show_saved_games(title: String, allow_add_button: bool, allow_delete: bool, max_snapshots: int) -> void:
 	if android_plugin:
-		android_plugin.showSavedGames(title, allow_add_button, allow_delete, max_snapshots)
+		android_plugin.snapshotsShowSavedGames(title, allow_add_button, allow_delete, max_snapshots)
 
 
 # Event handlers
@@ -272,54 +280,62 @@ func _on_events_loaded_by_ids(events: String) -> void:
 
 
 # Leaderboards
-func _on_score_submitted(submitted: bool, leaderboard_id: String) -> void:
-	emit_signal("score_submitted", submitted, leaderboard_id)
+func _on_leaderboards_score_submitted(submitted: bool, leaderboard_id: String) -> void:
+	emit_signal("leaderboards_score_submitted", submitted, leaderboard_id)
 
 
-func _on_score_loaded(leaderboard_id: String, score: String) -> void:
-	emit_signal("score_loaded", leaderboard_id, JSON.parse(score).result)
+func _on_leaderboards_score_loaded(leaderboard_id: String, score: String) -> void:
+	emit_signal("leaderboards_score_loaded", leaderboard_id, JSON.parse(score).result)
 
 
-func _on_all_leaderboards_loaded(leaderboards: String) -> void:
-	emit_signal("all_leaderboards_loaded", JSON.parse(leaderboards).result)
+func _on_leaderboards_all_loaded(leaderboards: String) -> void:
+	emit_signal("leaderboards_all_loaded", JSON.parse(leaderboards).result)
 
 
-func _on_leaderboard_loaded(leaderboard: String) -> void:
-	emit_signal("leaderboard_loaded", JSON.parse(leaderboard).result)
+func _on_leaderboards_loaded(leaderboard: String) -> void:
+	emit_signal("leaderboards_loaded", JSON.parse(leaderboard).result)
 
 
 # Players
-func _on_current_player_loaded(player: String) -> void:
-	emit_signal("current_player_loaded", JSON.parse(player).result)
+func _on_players_current_loaded(player: String) -> void:
+	emit_signal("players_current_loaded", JSON.parse(player).result)
 
 
-func _on_friends_loaded(friends: String) -> void:
-	emit_signal("friends_loaded", JSON.parse(friends).result)
+func _on_players_friends_loaded(friends: String) -> void:
+	emit_signal("players_friends_loaded", JSON.parse(friends).result)
 
 
-func _on_player_searched(player: String) -> void:
-	emit_signal("friends_loaded", JSON.parse(player).result)
+func _on_players_searched(player: String) -> void:
+	emit_signal("players_friends_loaded", JSON.parse(player).result)
 
 
 # Sign In
-func _on_user_authenticated(_is_authenticated: bool) -> void:
-	emit_signal("user_authenticated", _is_authenticated)
+func _on_sign_in_user_authenticated(_is_authenticated: bool) -> void:
+	emit_signal("sign_in_user_authenticated", _is_authenticated)
+
+
+func _on_sign_in_requested_server_side_access(token: String) -> void:
+	emit_signal("sign_in_requested_server_side_access", token)
 
 
 # Snapshots
-func _on_game_saved(saved: bool, file_name: String, description: String) -> void:
-	emit_signal("game_saved", saved, file_name, description)
+func _on_snapshots_game_saved(saved: bool, file_name: String, description: String) -> void:
+	emit_signal("snapshots_game_saved", saved, file_name, description)
 
 
-func _on_game_loaded(snapshot: String) -> void:
+func _on_snapshots_game_loaded(snapshot: String) -> void:
 	var parsed_snapshot: Dictionary = JSON.parse(snapshot).result
 	var content: Array = parsed_snapshot.get("content", [])
 
 	if typeof(content) == TYPE_ARRAY:
 		parsed_snapshot["content"] = PoolByteArray(content)
 
-	emit_signal("game_loaded", parsed_snapshot)
+	emit_signal("snapshots_game_loaded", parsed_snapshot)
 
 
-func _on_conflict_emitted(conflict: String) -> void:
-	emit_signal("conflict_emitted", JSON.parse(conflict).result)
+func _on_snapshots_conflict_emitted(conflict: String) -> void:
+	emit_signal("snapshots_conflict_emitted", JSON.parse(conflict).result)
+
+
+func _on_image_stored(image: String) -> void:
+	emit_signal("image_stored", image)

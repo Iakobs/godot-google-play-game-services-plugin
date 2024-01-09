@@ -16,19 +16,19 @@ onready var _spin_box_max_snapshots: SpinBox = find_node("SpinBoxMaxSnapshots")
 
 # Built-in overrides
 func _ready() -> void:
-	GooglePlayGamesServices.connect("game_saved", self, "_on_game_saved")
-	GooglePlayGamesServices.connect("game_loaded", self, "_on_game_loaded")
-	GooglePlayGamesServices.connect("conflict_emitted", self, "_on_conflict_emitted")
+	GooglePlayGamesServices.connect("snapshots_game_saved", self, "_on_snapshots_game_saved")
+	GooglePlayGamesServices.connect("snapshots_game_loaded", self, "_on_snapshots_game_loaded")
+	GooglePlayGamesServices.connect("snapshots_conflict_emitted", self, "_on_snapshots_conflict_emitted")
 
 
 # Event handlers
 # Buttons
 func _on_ButtonLoadGame_pressed() -> void:
-	GooglePlayGamesServices.load_game(_line_edit_file_name.text)
+	GooglePlayGamesServices.snapshots_load_game(_line_edit_file_name.text)
 
 
 func _on_ButtonSaveGame_pressed() -> void:
-	GooglePlayGamesServices.save_game(
+	GooglePlayGamesServices.snapshots_save_game(
 		_line_edit_file_name.text,
 		_line_edit_description.text,
 		_line_edit_save_data.text.to_utf8(),
@@ -37,7 +37,7 @@ func _on_ButtonSaveGame_pressed() -> void:
 
 
 func _on_ButtonShowSavedGames_pressed() -> void:
-	GooglePlayGamesServices.show_saved_games(
+	GooglePlayGamesServices.snapshots_show_saved_games(
 		_line_edit_title.text,
 		_check_button_allow_add_button.pressed,
 		_check_button_allow_delete.pressed,
@@ -45,19 +45,19 @@ func _on_ButtonShowSavedGames_pressed() -> void:
 
 
 # Return values
-func _on_game_saved(saved: bool, file_name: String, description: String) -> void:
+func _on_snapshots_game_saved(saved: bool, file_name: String, description: String) -> void:
 	var value := "saved: " + str(saved) + ", file_name: " + file_name + ", description: " + description
 	_line_edit_snapshots_output.text = value
 	prints(value)
 
 
-func _on_game_loaded(snapshot: Dictionary) -> void:
+func _on_snapshots_game_loaded(snapshot: Dictionary) -> void:
 	var value := "snapshot: " + str(snapshot)
 	_line_edit_snapshots_output.text = value
 	prints(value)
 
 
-func _on_conflict_emitted(conflict: Dictionary) -> void:
+func _on_snapshots_conflict_emitted(conflict: Dictionary) -> void:
 	var value := "conflict: " + str(conflict)
 	_line_edit_snapshots_output.text = value
 	prints(value)
