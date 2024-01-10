@@ -8,64 +8,39 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Resource",
-"class": "Achievement",
-"language": "GDScript",
-"path": "res://addons/google_play_game_services_manager/achievements/Achievement.gd"
-}, {
-"base": "Node",
-"class": "AndroidPluginClient",
-"language": "GDScript",
-"path": "res://addons/google_play_game_services_manager/AndroidPluginClient.gd"
-}, {
-"base": "Resource",
-"class": "Player",
-"language": "GDScript",
-"path": "res://addons/google_play_game_services_manager/friends/Player.gd"
-}, {
-"base": "Resource",
-"class": "PlayerLevel",
-"language": "GDScript",
-"path": "res://addons/google_play_game_services_manager/friends/PlayerLevel.gd"
-}, {
-"base": "Resource",
-"class": "PlayerLevelInfo",
-"language": "GDScript",
-"path": "res://addons/google_play_game_services_manager/friends/PlayerLevelInfo.gd"
-} ]
-_global_script_class_icons={
-"Achievement": "",
-"AndroidPluginClient": "",
-"Player": "",
-"PlayerLevel": "",
-"PlayerLevelInfo": ""
-}
-
 [application]
 
 config/name="Google Play Game Services Godot Plugin"
 config/description="A godot plugin to connect to the android godot plugin counterpart of the same name.
 The project includes a demo of the main features, showing one of the multiple ways
 of how to use the plugin."
-run/main_scene="res://Main.tscn"
+run/main_scene="res://example/main.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
-GamesSignInClient="*res://addons/google_play_game_services_manager/sign_in/GamesSignInClient.gd"
-AchievementsClient="*res://addons/google_play_game_services_manager/achievements/AchievementsClient.gd"
-LeaderboardsClient="*res://addons/google_play_game_services_manager/leaderboards/LeaderboardsClient.gd"
-GameSecrets="*res://GameSecrets.gd"
-FriendsClient="*res://addons/google_play_game_services_manager/friends/FriendsClient.gd"
+GooglePlayGamesServices="*res://addons/google_play_game_services_manager/singleton.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
 window/size/width=720
 window/size/height=1280
+window/size/test_width=540
+window/size/test_height=960
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_width"
+
+[editor]
+
+scene_naming=2
 
 [editor_plugins]
 
@@ -74,7 +49,6 @@ enabled=PoolStringArray( "res://addons/google_play_game_services_manager/plugin.
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
-theme/custom="res://assets/resources/Theme.tres"
 
 [physics]
 
@@ -85,4 +59,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"

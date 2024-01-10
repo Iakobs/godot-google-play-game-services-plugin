@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://example/sign_in.gd" type="Script" id=1]
+[ext_resource path="res://example/resources/theme.tres" type="Theme" id=2]
+
+[node name="SignIn" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelTitle" type="Label" parent="VBoxContainer"]
+margin_right = 720.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Sign In"
+align = 1
+valign = 1
+
+[node name="LineEditSignInOutput" type="LineEdit" parent="VBoxContainer"]
+margin_top = 144.0
+margin_right = 720.0
+margin_bottom = 284.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+placeholder_text = "Output"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="LabelEndpoints" type="Label" parent="VBoxContainer"]
+margin_top = 288.0
+margin_right = 720.0
+margin_bottom = 428.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Endpoints"
+align = 1
+valign = 2
+
+[node name="ButtonIsAuthenticated" type="Button" parent="VBoxContainer"]
+margin_top = 432.0
+margin_right = 720.0
+margin_bottom = 572.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "Is Authenticated"
+expand_icon = true
+
+[node name="ButtonSignIn" type="Button" parent="VBoxContainer"]
+margin_top = 576.0
+margin_right = 720.0
+margin_bottom = 716.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "SignIn"
+expand_icon = true
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 720.0
+margin_right = 720.0
+margin_bottom = 1280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[connection signal="pressed" from="VBoxContainer/ButtonIsAuthenticated" to="." method="_on_ButtonIsAuthenticated_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSignIn" to="." method="_on_ButtonSignIn_pressed"]
