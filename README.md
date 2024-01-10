@@ -6,7 +6,7 @@
 
 > ⚠️ A **Godot 4.2+** version of this plugin can be found [here](https://github.com/Iakobs/godot-play-game-services)!
 
-> ⚠️ This plugin **requires** [Google Play Games Services for Godot](https://github.com/Iakobs/godot-google-play-game-services-plugin), which is a **native plugin** for Android. The addon on the current repository only provide a global singleton with **code completion** out-of-the-box, but it's not a requirement.
+> ⚠️ This plugin **requires** [Google Play Games Services for Godot](https://github.com/Iakobs/godot-google-play-game-services-android-plugin), which is a **native plugin** for Android. The addon on the current repository only provide a global singleton with **code completion** out-of-the-box, but it's not a requirement.
 
 > ⚠️ In order to use the Google Play Game Services, you will need a Google Play Console developer account, which involves a **once in a lifetime payment of $25** at the time of writing (January 2024).
 
