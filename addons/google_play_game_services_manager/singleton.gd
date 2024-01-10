@@ -102,7 +102,7 @@ func _ready() -> void:
 
 # Public methods
 # Achievements
-func achievements_increment(achievement_id: String, amount: int, immediate := false) -> void:
+func achievements_increment(achievement_id: String, amount: int, immediate := true) -> void:
 	if android_plugin:
 		android_plugin.achievementsIncrement(achievement_id, amount, immediate)
 
@@ -112,12 +112,12 @@ func achievements_load(force_reload := false) -> void:
 		android_plugin.achievementsLoad(force_reload)
 
 
-func achievements_reveal(achievement_id: String, immediate := false) -> void:
+func achievements_reveal(achievement_id: String, immediate := true) -> void:
 	if android_plugin:
 		android_plugin.achievementsReveal(achievement_id, immediate)
 
 
-func achievements_set_steps(achievement_id: String, amount: int, immediate := false) -> void:
+func achievements_set_steps(achievement_id: String, amount: int, immediate := true) -> void:
 	if android_plugin:
 		android_plugin.achievementsSetSteps(achievement_id, amount, immediate)
 
@@ -127,7 +127,7 @@ func achievements_show() -> void:
 		android_plugin.achievementsShow()
 
 
-func achievements_unlock(achievement_id: String, immediate := false) -> void:
+func achievements_unlock(achievement_id: String, immediate := true) -> void:
 	if android_plugin:
 		android_plugin.achievementsUnlock(achievement_id, immediate)
 
