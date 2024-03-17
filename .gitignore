@@ -16,6 +16,9 @@ data_*/
 # VS Code
 .vscode
 
+# Jetbrains
+/.idea/
+
 # Android
 *.jks
 android/build

@@ -106,7 +106,7 @@ Returns `true` if the score is submitted. `false` otherwise. Also returns the id
 #### leaderboards_score_loaded(leaderboard_id: String, score: Dictionary)
 
 This signal is emitted when calling the `leaderboards_load_player_score` method.
-Return the leaderboard id and an dictionary representing the [LeaderboardScore](https://developers.google.com/android/reference/com/google/android/gms/games/leaderboard/LeaderboardScore).
+Return the leaderboard id and a dictionary representing the [LeaderboardScore](https://developers.google.com/android/reference/com/google/android/gms/games/leaderboard/LeaderboardScore).
 
 #### leaderboards_all_loaded(leaderboards: Array[Dictionary])
 
@@ -116,7 +116,15 @@ Returns an array of dictionaries representing the [Leaderboard](https://develope
 #### leaderboards_loaded(leaderboard: Dictionary)
 
 This signal is emitted when calling the `leaderboards_load` method.
-Returns an dictionary representing the [Leaderboard](https://developers.google.com/android/reference/com/google/android/gms/games/leaderboard/Leaderboard) object.
+Returns a dictionary representing the [Leaderboard](https://developers.google.com/android/reference/com/google/android/gms/games/leaderboard/Leaderboard) object.
+
+#### leaderboards_player_centered_scores_loaded(leaderboard_id: String, leaderboard_scores: Dictionary)
+
+This signal is emitted when calling the `leaderboards_load_player_centered_scores` method. Returns the leaderboard id and a dictionary representing the [LeaderboardScores](https://developers.google.com/android/reference/com/google/android/gms/games/LeaderboardsClient.LeaderboardScores) object.
+
+#### leaderboards_top_scores_loaded(leaderboard_id: String, leaderboard_scores: Dictionary)
+
+This signal is emitted when calling the `leaderboards_load_top_scores` method. Returns the leaderboard id and a dictionary representing the [LeaderboardScores](https://developers.google.com/android/reference/com/google/android/gms/games/LeaderboardsClient.LeaderboardScores) object.
 
 ### Players
 
@@ -241,6 +249,14 @@ Loads the leaderboard data for the currently signed-in player. Emits `leaderboar
 #### leaderboards_load(leaderboard_id: String, force_reload: bool)
 
 Loads the leaderboard data for the currently signed-in player. Emits `leaderboards_loaded`
+
+#### leaderboards_load_player_centered_scores(leaderboard_id: String, time_span: int, collection: int, max_results: int, force_reload: bool)
+
+Loads the selected leaderboard and an array of scores for that leaderboard, centered in the currently signed in player. Emits the `leaderboards_player_centered_scores_loaded` signal.
+
+#### leaderboards_load_top_scores(leaderboard_id: String, time_span: int, collection: int, max_results: int, force_reload: bool)
+
+Loads the selected leaderboard and an array of scores for that leaderboard. Emits the `leaderboards_top_scores_loaded` signal.
 
 ### Players
 

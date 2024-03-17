@@ -16,6 +16,8 @@ signal leaderboards_score_submitted(submitted, leaderboard_id)
 signal leaderboards_score_loaded(leaderboard_id, score)
 signal leaderboards_all_loaded(leaderboards)
 signal leaderboards_loaded(leaderboard)
+signal leaderboards_player_centered_scores_loaded(leaderboard_id, leaderboard_scores)
+signal leaderboards_top_scores_loaded(leaderboard_id, leaderboard_scores)
 
 # Players
 signal players_current_loaded(player)
@@ -79,6 +81,8 @@ func _ready() -> void:
 	android_plugin.connect("leaderboardsScoreLoaded", self, "_on_leaderboards_score_loaded")
 	android_plugin.connect("leaderboardsAllLoaded", self, "_on_leaderboards_all_loaded")
 	android_plugin.connect("leaderboardsLoaded", self, "_on_leaderboards_loaded")
+	android_plugin.connect("leaderboardsLoadPlayerCenteredScores", self, "_on_leaderboards_load_player_centered_scores")
+	android_plugin.connect("leaderboardsLoadTopScores", self, "_on_leaderboards_load_top_scores")
 
 	# Players
 	android_plugin.connect("playersCurrentLoaded", self, "_on_players_current_loaded")
@@ -189,6 +193,16 @@ func leaderboards_load(leaderboard_id: String, force_reload: bool) -> void:
 		android_plugin.leaderboardsLoad(leaderboard_id, force_reload)
 
 
+func leaderboards_load_player_centered_scores(leaderboard_id: String, time_span: int, collection: int, max_results: int, force_reload: bool) -> void:
+	if android_plugin:
+		android_plugin.leaderboardsLoadPlayerCenteredScores(leaderboard_id, time_span, collection, max_results, force_reload)
+
+
+func leaderboards_load_top_scores(leaderboard_id: String, time_span: int, collection: int, max_results: int, force_reload: bool) -> void:
+	if android_plugin:
+		android_plugin.leaderboardsLoadTopScores(leaderboard_id, time_span, collection, max_results, force_reload)
+
+
 # Players
 func players_compare_profile(other_player_id: String, other_player_in_game_name := "", current_player_in_game_name := "") -> void:
 	if android_plugin:
@@ -295,6 +309,13 @@ func _on_leaderboards_all_loaded(leaderboards: String) -> void:
 func _on_leaderboards_loaded(leaderboard: String) -> void:
 	emit_signal("leaderboards_loaded", JSON.parse(leaderboard).result)
 
+
+func _on_leaderboards_load_player_centered_scores(leaderboard_id: String, scores: String) -> void:
+	emit_signal("leaderboards_player_centered_scores_loaded", leaderboard_id, JSON.parse(scores).result)
+
+
+func _on_leaderboards_load_top_scores(leaderboard_id: String, scores: String) -> void:
+	emit_signal("leaderboards_top_scores_loaded", leaderboard_id, JSON.parse(scores).result)
 
 # Players
 func _on_players_current_loaded(player: String) -> void:
