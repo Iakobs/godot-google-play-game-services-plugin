@@ -81,8 +81,8 @@ func _ready() -> void:
 	android_plugin.connect("leaderboardsScoreLoaded", self, "_on_leaderboards_score_loaded")
 	android_plugin.connect("leaderboardsAllLoaded", self, "_on_leaderboards_all_loaded")
 	android_plugin.connect("leaderboardsLoaded", self, "_on_leaderboards_loaded")
-	android_plugin.connect("leaderboardsLoadPlayerCenteredScores", self, "_on_leaderboards_load_player_centered_scores")
-	android_plugin.connect("leaderboardsLoadTopScores", self, "_on_leaderboards_load_top_scores")
+	android_plugin.connect("leaderboardsPlayerCenteredScoresLoaded", self, "_on_leaderboards_load_player_centered_scores")
+	android_plugin.connect("leaderboardsTopScoresLoaded", self, "_on_leaderboards_load_top_scores")
 
 	# Players
 	android_plugin.connect("playersCurrentLoaded", self, "_on_players_current_loaded")
